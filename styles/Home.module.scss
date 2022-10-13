@@ -1,0 +1,385 @@
+.body {
+  width: 100%;
+  min-height: 100vh;
+  // border: 3px solid rgb(35, 79, 255);
+}
+
+.header {
+  width: 100%;
+  z-index: 50;
+  display: grid;
+  border: 3px solid rgb(35, 79, 255);
+  grid-template:
+    "logo nothing nav" 150px
+    /300px 1fr 400px;
+}
+
+.logo {
+  grid-area: logo;
+  color: white;
+  background-color: black;
+  // border: 3px solid red;
+  // background-color: rgb(35, 79, 255);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  h1 {
+    margin: 0;
+  }
+  p {
+    margin: 0.5rem 0 0;
+  }
+}
+
+.nothing {
+  grid-area: nothing;
+  background-color: black;
+  // border: 3px solid green;
+}
+
+.nav {
+  grid-area: nav;
+  // border: 3px solid black;
+  // border: 3px solid blue;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  ul {
+    list-style: none;
+    display: flex;
+    padding: 1rem;
+  }
+
+  li {
+    padding: 0 0.5rem;
+  }
+
+  a {
+    background-color: rgb(35, 79, 255);
+    color: white;
+
+    border-radius: 8px;
+    padding: 1rem 1rem;
+    display: flex;
+    &:hover {
+      background-color: rgb(131, 156, 255);
+    }
+  }
+}
+
+//🌕1024以下になる前のドロワーメニューは隠しておきたい🌕
+
+.drawerMenu {
+  border: 3px solid rgb(35, 79, 255);
+  // border: 3px solid rgb(47, 47, 238);
+  width: 0;
+  color: white;
+  background-color: rgb(34, 35, 36);
+  transition: 0.5s;
+  height: 0;
+  opacity: 0;
+  z-index: -100;
+  &.open {
+    height: 100vh;
+    opacity: 1;
+    z-index: 100;
+  }
+}
+
+// ################# close #################
+
+@media screen and (max-width: 1024px) {
+  .header {
+    display: grid;
+    grid-template:
+      "logo nothing button" 150px
+      /300px 1fr 150px;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  // 🍔＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃＃🍔
+
+  .container {
+    // border: 5px solid orange;
+    grid-area: button;
+    position: relative;
+    background-color: black;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+
+    .humburger {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      // border: 3px solid red;
+      // width: 80px;
+      // height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    span {
+      background-color: white;
+      // background-color: white;
+      width: 30px;
+      height: 3px;
+      display: block;
+      margin-bottom: 7px;
+    }
+  }
+  //  戻したい場合
+  // .container {
+  //   border: 5px solid orange;
+  //   grid-area: button;
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+
+  //   .humburger {
+  //     border: 3px solid red;
+  //     width: 80px;
+  //     height: 80px;
+  //     display: flex;
+  //     justify-content: center;
+  //     align-items: center;
+  //     flex-direction: column;
+  //   }
+
+  //   span {
+  //     background-color: black;
+  //     // background-color: white;
+  //     width: 30px;
+  //     height: 3px;
+  //     display: block;
+  //     margin-bottom: 7px;
+  //   }
+  // }
+
+  //❌＃＃＃＃＃＃＃＃＃上から降ってくるメニュー表＃＃＃＃＃＃＃＃＃❌
+}
+
+.drawerMenu {
+  // border: 5px solid red;
+  width: 100%;
+  min-height: 100%;
+  position: fixed;
+  top: 0;
+
+  ul {
+    // border: 5px solid blue;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .close {
+    // border: 5px solid magenta;
+    height: 150px;
+    display: flex;
+    justify-content: flex-end;
+
+    .border {
+      // border: 5px solid skyblue;
+      width: 150px;
+      position: relative;
+    }
+
+    .closeBox {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      // border: 5px solid orange;
+    }
+
+    span {
+      background-color: white;
+      width: 30px;
+      height: 3px;
+      display: block;
+      margin-bottom: 10px;
+      margin: 0 0 10px auto;
+      &:first-child {
+        transform: translateY(6px) rotate(150deg);
+      }
+      &:nth-child(2) {
+        transform: translateY(-6px) rotate(-150deg);
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  li {
+    // border: 5px solid green;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  a {
+    // border: 5px solid blue;
+    width: 200px;
+  }
+
+  .mainTitle {
+    text-align: center;
+    padding: 1rem;
+    margin: 0;
+    border-bottom: 5px solid rgb(35, 79, 255);
+    // border: 5px solid orange;
+    cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .header {
+    display: grid;
+    grid-template:
+      "logo nothing button" 150px
+      /200px 1fr 150px;
+
+    .logo {
+      // border: 1px solid red;
+      font-size: 0.8rem;
+    }
+  }
+}
+// 🔥🔴元に戻したい場合（自分が少し手を加えてるバージョン）🔴🔥
+
+// .drawerMenu {
+//   border: 5px solid red;
+//   width: 100%;
+//   padding: 2rem;
+//   position: fixed;
+//   top: 0;
+
+//   ul {
+//     border: 5px solid blue;
+//     margin: 0;
+//     padding: 0;
+//     list-style: none;
+//   }
+
+//   .close {
+//     border: 5px solid magenta;
+//     padding: 1rem;
+//     display: flex;
+//     justify-content: flex-end;
+
+//     .closeBox {
+//       border: 5px solid orange;
+//     }
+
+//     span {
+//       background-color: white;
+//       width: 30px;
+//       height: 3px;
+//       display: block;
+//       margin-bottom: 10px;
+//       margin: 0 0 10px auto;
+//       &:first-child {
+//         transform: translateY(6px) rotate(150deg);
+//       }
+//       &:nth-child(2) {
+//         transform: translateY(-6px) rotate(-150deg);
+//         margin-bottom: 0;
+//       }
+//     }
+//   }
+
+//   li {
+//     border: 5px solid green;
+//     padding: 2rem;
+//     display: flex;
+//     justify-content: center;
+//   }
+
+//   .mainTitle {
+//     padding: 1rem;
+//     margin: 0;
+//     border: 5px solid orange;
+//     cursor: pointer;
+//   }
+// }
+
+//🔥一番最初のdrawerMenuに戻したい場合🔥
+
+// .drawerMenu {
+//   border: 5px solid red;
+//   width: 100%;
+//   position: fixed;
+//   top: 0;
+//   // text-align: center;
+//   display: flex;
+//   justify-content: center;
+//   // align-items: center;
+
+//   ul {
+//     border: 5px solid blue;
+//     list-style: none;
+//     width: 90%;
+//     margin: 0 auto;
+//     padding: 2rem;
+//     // padding: 0;
+//     li {
+//       border: 5px solid greenyellow;
+//       margin-bottom: 2rem;
+//       // opacity: 0.8;
+//       // font-family: "Josefin Sans", sans-serif;
+//       font-weight: 200;
+//       display: flex;
+//       justify-content: center;
+//       align-items: center;
+//     }
+//   }
+// }
+
+// .mainTitle {
+//   border: 5px solid orange;
+//   font-size: 28px;
+//   // margin-bottom: 5px;
+//   letter-spacing: 2px;
+// }
+
+// .close {
+//   border: 5px solid magenta;
+//   cursor: pointer;
+
+//   // closeボタンが上から28pxの地点に設定
+//   margin-top: 28px;
+//   padding-right: 5px;
+// span {
+//   background-color: white;
+//   width: 30px;
+//   height: 3px;
+//   display: block;
+//   margin-bottom: 10px;
+//   margin: 0 0 10px auto;
+//   &:first-child {
+//     transform: translateY(6px) rotate(150deg);
+//   }
+//   &:nth-child(2) {
+//     transform: translateY(-6px) rotate(-150deg);
+//     margin-bottom: 0;
+//   }
+//   }
+
+//   //小さく書いてあるcloseの部分
+//   p {
+//     text-align: right;
+//     font-size: 11px;
+//     padding-right: 1px;
+//   }
+// }
